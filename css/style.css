@@ -1,0 +1,340 @@
+:root{
+    --blanco: #FFFFFF;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+}
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box; /* Paul Irish */
+    scroll-snap-type: y mandatory;
+}
+                /* estas 2 lineas nos ayudan a convertir los PX a REM 1.6rem=16px(los rem son responsive) (el font size: 62,5 y font size 16px) */
+
+
+.servicios,
+.navegacion-principal, /* en HTML ponemos scroll snap type y que sea Y mandatory, que vaya en Y, y APARTE este codigo para que cada que demos scroll se detenga en estas secciones */
+.formulario,
+.footer{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;      
+}
+
+body{
+    font-size: 1.6rem;
+    font-family: 'Krub', sans-serif; /* el style de la fuente va en el body para que lo aplique en todo el proyecto */
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /* primero va hacia donde va, luego el primer color y luego el segundo */
+}
+
+*, *:before, *:after {
+    box-sizing: inherit; /* Paul Irish */
+  }
+
+.contenedor{
+    max-width: 120rem; /* NECESARIO QUE SEA MAX-WIDTH para que se vea responsive bien en el celular */
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+.boton{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--blanco);
+    background-color: var(--secundario);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) { 
+    .boton{
+        width: auto; /* esto para regresarlo a lo que debe ocupar el boton */
+    }
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+.sombra{
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.56);
+    background-color: var(--blanco);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 2rem;
+}
+
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+/* Titulo */
+
+@media (min-width: 768px) { 
+    .titulo{
+        font-size: 3.6rem;
+    }
+}
+
+.titulo span{
+    font-size: 2rem;
+}
+
+/* Navegacion */
+
+.nav-bg{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) { 
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+.navegacion-principal a{
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 1rem 2rem; /* este padding tambien nos ayuda para el hover y que se muestre todo el recuadro amarillo */
+    font-weight: 700;
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+
+}
+
+/* Hero */
+.hero{
+    background-image: url(../Img/heronew.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 50rem;
+    position: relative; /* para usar el absolute primero le damos al padre un RELATIVE, luego al que queremos un ABSOLUTE */
+}
+
+@media (min-width: 768px) { 
+    .hero{
+    background-size: contain;
+    }
+}
+
+.contenido-hero{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7); /* aqui le damos ese tono oscuro a la imagen, ponemos el .7 para la transparencia y un height y width para abarcar todo */
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+    color: var(--blanco);
+}
+
+.ubicacion{
+    display: flex;
+    align-items: baseline; /* este BASELINE nos sirve para alinear el texto del parrafo con la BASE del logo, si le ponemos flex-end no funciona, esto al parecer porque el parrafo tiene sus margenes, tambien pudimos darle al P un margen de 0 y funciona */
+}
+
+/* Servicios */
+
+.servicios{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+@media (min-width: 768px) { 
+    .servicios{
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: unset;
+        column-gap: 2rem;
+    }
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--secundario);
+    font-weight: 400;
+}
+
+.servicio p{
+    line-height: 1.5;
+}
+
+.servicio .iconos{
+    height: 15rem; /* aqui creamos un DIV y le damos un fondo con medidas a los iconos */
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;  /* le ponemos un 50% para hacerlo redondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contacto */
+
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem, 100%); /* utlizar el valor mas pequeño de ser necesario (en ventanas grandes usara 60rem, si hay menos de 600 se usa el 100% como en un dispositivo*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    color: var(--primario);
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) { 
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        column-gap: 2rem;
+    }   
+}
+
+@media (min-width: 768px) { 
+    .campo:nth-child(3),
+    .campo:nth-child(4){
+        grid-column: 1/3;
+    }
+}
+
+@media (min-width: 768px) { 
+    .enviar{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: 700;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+
+@media (min-width: 768px) { 
+    .enviar{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.enviar-boton{
+    width: 100%;
+}
+
+@media (min-width: 768px) { 
+    .enviar-boton{
+        width: auto;
+    }
+}
+
+/* Footer */
+.footer{
+        margin-top: 1rem;
+        font-size: 1.6rem;
+        background-image: url(../Img/hero.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: var(--oscuro);
+        font-weight: 700;
+}
+
+@media (min-width: 768px) { 
+    .footer{
+        background-position: center -220px;
+        background-size: cover;
+        height: 15rem;
+        font-size: 2rem;
+    }
+}
+
+.footer-texto{
+    margin: 1rem 0;
+    text-shadow: 2px 2px 0 var(--blanco);
+}
+
+/* Selector de ELEMENTO es el que agarra la etiqueta
+Selector de clase pues es el CLASS, el que tiene el punto 
+Selector de ID, es el de ID, el que tiene el #
+Selector de Atributo, es el de src o el que busca entre padres e hijos, ej. .cliente .nombre busca nombre dentro de cliente
+Todos los hijos, .cliente>p , aplica la siguiente regla a todos los parrafos hijos cuyo padre sea la clase de cliente
+*/
